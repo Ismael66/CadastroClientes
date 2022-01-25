@@ -12,6 +12,7 @@ namespace CadastroClientesWF
         public Guid Id_cliente { set; get; }
 
         [TableAttribute("cep")]
+
         public string Cep { set; get; }
 
         [TableAttribute("rua")]
