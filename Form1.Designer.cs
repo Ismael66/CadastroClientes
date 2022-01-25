@@ -153,6 +153,7 @@
             this.cb_pessoaJurfis.Name = "cb_pessoaJurfis";
             this.cb_pessoaJurfis.Size = new System.Drawing.Size(162, 21);
             this.cb_pessoaJurfis.TabIndex = 11;
+            this.cb_pessoaJurfis.SelectedIndexChanged += new System.EventHandler(this.cb_pessoaJurfis_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -260,7 +261,6 @@
             this.lv_enderecos.TabIndex = 35;
             this.lv_enderecos.UseCompatibleStateImageBehavior = false;
             this.lv_enderecos.View = System.Windows.Forms.View.Details;
-            this.lv_enderecos.Visible = false;
             // 
             // columnHeader2
             // 

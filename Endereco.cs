@@ -10,7 +10,7 @@ namespace CadastroClientesWF
 
         [TableAttribute("id_cliente")]
         public Guid Id_cliente { set; get; }
-        
+
         [TableAttribute("cep")]
         public string Cep { set; get; }
 

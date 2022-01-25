@@ -47,6 +47,8 @@ namespace CadastroClientesWF
             cb_pessoaJurfis.SelectedIndex = -1;
             mtb_cpf.Text = "";
             mtb_cnpj.Text = "";
+            mtb_cnpj.Enabled = false;
+            mtb_cpf.Enabled = false;
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -62,23 +64,35 @@ namespace CadastroClientesWF
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem("6839000");
-            item.SubItems.Add("PA, 1");
-            lv_enderecos.Items.Add(item);
-        }
 
+        }
         private void button3_Click(object sender, EventArgs e)
         {
-            lv_enderecos.Visible = true;
             lv_enderecos.Items.Clear();
-            Dictionary<string, string> infos = cliente.ResgatarInfo();
+            var teste2 = new Endereco();
+            var nomeColunas = new List<string>() { "cep", "bairro", "estado" };
+            var infos = teste2.ObterDados(nomeColunas, cliente.Id);
             foreach (var info in infos)
             {
-                ListViewItem item = new ListViewItem(info.Key);
-                string[] subItens = info.Value.Split(',');
-                item.SubItems.Add(subItens[1]);
-                item.SubItems.Add(subItens[0]);
+                ListViewItem item = new ListViewItem(info.Cep);
+                item.SubItems.Add(info.Bairro);
+                item.SubItems.Add(info.Estado);
                 lv_enderecos.Items.Add(item);
+            }
+        }
+        private void cb_pessoaJurfis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cb_pessoaJurfis.SelectedIndex == 0)
+            {
+                mtb_cnpj.Enabled = true;
+                mtb_cpf.Enabled = false;
+                mtb_cpf.Text = "";
+            }
+            if (cb_pessoaJurfis.SelectedIndex == 1)
+            {
+                mtb_cnpj.Enabled = false;
+                mtb_cpf.Enabled = true;
+                mtb_cnpj.Text = "";
             }
         }
     }
