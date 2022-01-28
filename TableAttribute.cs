@@ -12,6 +12,7 @@ namespace CadastroClientesWF
         public string Nome;
         public bool NaoLevar;
         public bool Requirido;
+        public bool IdLigacao;
 
         public TableAttribute(string nome)
         {

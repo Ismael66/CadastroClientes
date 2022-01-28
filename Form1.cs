@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Configuration;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CadastroClientesWF
@@ -25,7 +17,6 @@ namespace CadastroClientesWF
             cliente.Salvar();
             MessageBox.Show("Cliente cadastrado com sucesso!");
             button2.Visible = true;
-            button3.Visible = true;
         }
         private void InsereValorCliente()
         {
@@ -64,21 +55,7 @@ namespace CadastroClientesWF
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-
-        }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            lv_enderecos.Items.Clear();
-            var teste2 = new Endereco();
-            var nomeColunas = new List<string>() { "cep", "bairro", "estado" };
-            var infos = teste2.ObterDados(nomeColunas, cliente.Id);
-            foreach (var info in infos)
-            {
-                ListViewItem item = new ListViewItem(info.Cep);
-                item.SubItems.Add(info.Bairro);
-                item.SubItems.Add(info.Estado);
-                lv_enderecos.Items.Add(item);
-            }
+            this.Owner.Enabled = false;
         }
         private void cb_pessoaJurfis_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -94,6 +71,10 @@ namespace CadastroClientesWF
                 mtb_cpf.Enabled = true;
                 mtb_cnpj.Text = "";
             }
+        }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CadastroClientesWF
 {
     [TableAttribute("clientes")]
     public class Cliente : Tabela<Cliente>
     {
+        [TableAttribute(IdLigacao = true)]
         [TableAttribute("id")]
-        public Guid Id { get; set; }
+        public override Guid Id { get; set; }
 
         [TableAttribute("nome")]
         [TableAttribute(Requirido =true)]
@@ -32,6 +34,10 @@ namespace CadastroClientesWF
 
         [TableAttribute("cnpj")]
         public string CNPJ { get; set; }
+        public List<Cliente> ObterCliente(Guid id)
+        {
+            return this.ObterDados(new List<string> { "nome", "sobrenome", "nascimento", "cpf", "cnpj" }, id, "id");
+        }
     }
     
 }

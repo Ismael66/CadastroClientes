@@ -193,6 +193,54 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiViaCEP.cs" />
+    <Compile Include="ListaClienteId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaClienteId.Designer.cs">
+      <DependentUpon>ListaClienteId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaClientes.Designer.cs">
+      <DependentUpon>ListaClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaEnderecoId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaEnderecoId.Designer.cs">
+      <DependentUpon>ListaEnderecoId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaEnderecos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaEnderecos.Designer.cs">
+      <DependentUpon>ListaEnderecos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaEnderecosIdCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaEnderecosIdCliente.Designer.cs">
+      <DependentUpon>ListaEnderecosIdCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaTodosClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaTodosClientes.Designer.cs">
+      <DependentUpon>ListaTodosClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaTodosEnderecos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaTodosEnderecos.Designer.cs">
+      <DependentUpon>ListaTodosEnderecos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViaCEP.cs" />
     <Compile Include="Endereco.cs" />
     <Compile Include="Tabela.cs" />
@@ -217,6 +265,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_CadastroEndereco.resx">
       <DependentUpon>F_CadastroEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaClienteId.resx">
+      <DependentUpon>ListaClienteId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaClientes.resx">
+      <DependentUpon>ListaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaEnderecoId.resx">
+      <DependentUpon>ListaEnderecoId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaEnderecos.resx">
+      <DependentUpon>ListaEnderecos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaEnderecosIdCliente.resx">
+      <DependentUpon>ListaEnderecosIdCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaTodosClientes.resx">
+      <DependentUpon>ListaTodosClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaTodosEnderecos.resx">
+      <DependentUpon>ListaTodosEnderecos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -253,6 +325,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\maxresdefault.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu-bar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\My project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\My project1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\My project%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\My project%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\My project%283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\My project%284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user %281%29%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user %281%29%282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user %281%29%283%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

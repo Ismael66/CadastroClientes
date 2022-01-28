@@ -13,6 +13,7 @@ namespace CadastroClientesWF
 {
     public abstract class Tabela<T>
     {
+        public virtual Guid Id { set; get; }
         public void Salvar()
         {
             Dictionary<string, object> colunasValor = ObterColunaValor();
@@ -35,51 +36,12 @@ namespace CadastroClientesWF
                 }
             }
         }
-        public List<T> ResgatarInfo()
+        public List<T> ObterDados(List<string> parametros, Guid id, string campoVinculado)
         {
-            Dictionary<string, object> colunasValor = ObterColunaValor(false);
-            var teste = new List<T>();
-            var parametros = colunasValor.Keys;
-            string sql = $"SELECT {string.Join(",", parametros)} FROM {ObterNomeTabela()} WHERE id_cliente='{Form1.cliente.Id}'";
-            using (var conn = ObterConexao())
-            {
-                try
-                {
-                    var cmd = new SqlCommand(sql, conn);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    using (IDataReader dr = cmd.ExecuteReader())
-                    {
-                        //List<Endereco> customers = dr.Select<Endereco>(Endereco.FromDataReader).ToList();
-                        while (dr.Read())
-                        {
-                            var obj = Activator.CreateInstance<T>();
-                            foreach (PropertyInfo prop in obj.GetType().GetProperties())
-                            {
-                                if (!object.Equals(dr[prop.Name], DBNull.Value))
-                                {
-                                    prop.SetValue(obj, dr[prop.Name], null);
-                                }
-                            }
-                            teste.Add(obj);
-                            //teste.Add(dr[0]);
-                            //teste.Add($"{dr[1].ToString()} , {dr[2].ToString()}");
-                        }
-                        return teste;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    throw;
-                }
-            }
-        }
-        public List<T> ObterDados(List<string> parametros, Guid id)
-        {
-
+            string sql;
             var retorno = new List<T>();
-            string sql = $"SELECT {string.Join(",", parametros)} FROM {ObterNomeTabela()} WHERE id_cliente='{id}'";
+            if (id == Guid.Empty || string.IsNullOrEmpty(campoVinculado)) sql = $"SELECT {string.Join(",", parametros)} FROM {ObterNomeTabela()}";
+            else sql = $"SELECT {string.Join(",", parametros)} FROM {ObterNomeTabela()} WHERE {campoVinculado}='{id}'";
             using (var conn = ObterConexao())
             {
                 try
@@ -91,8 +53,7 @@ namespace CadastroClientesWF
                     {
                         while (dr.Read())
                         {
-                            T obj = default(T);
-                            obj = Activator.CreateInstance<T>();
+                            T obj = (T)Activator.CreateInstance(typeof(T));
                             var colunas = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
                             foreach (var coluna in colunas)
                             {
@@ -117,15 +78,18 @@ namespace CadastroClientesWF
                 }
             }
         }
-        public List<T> ObterDados(Guid id)
+        public List<T> ObterDados()
         {
             var parametros = new List<string>();
             var colunas = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            string nomeColuna;
             foreach (var coluna in colunas)
             {
-                parametros.Add(ObterNomeColuna(coluna, false));
+                nomeColuna = ObterNomeColuna(coluna, false);
+                if (string.IsNullOrEmpty(nomeColuna)) continue;
+                else parametros.Add(ObterNomeColuna(coluna, false));
             }
-            return ObterDados(parametros, id);
+            return ObterDados(parametros, Guid.Empty, string.Empty);
         }
         private SqlConnection ObterConexao()
         {
@@ -163,31 +127,19 @@ namespace CadastroClientesWF
             var nomeColuna = string.Empty;
             foreach (var tableAttribute in tableAttributes)
             {
-                if (validacao && tableAttribute.NaoLevar) return String.Empty;
+                if (validacao && tableAttribute.NaoLevar) return string.Empty;
                 if (validacao && tableAttribute.Requirido && !ObterValidacao(coluna.GetValue(this))) throw new Exception($"Atributo {nomeColuna} é requirido e está nulo.");
                 if (string.IsNullOrEmpty(tableAttribute.Nome)) continue;
                 else nomeColuna = tableAttribute.Nome;
             }
             return nomeColuna;
         }
-        //private string ObterNomeColunaHistorico(PropertyInfo coluna)
-        //{
-        //    var tableAttributes = (TableAttribute[])coluna.GetCustomAttributes<TableAttribute>();
-        //    var nomeColuna = string.Empty;
-        //    foreach (var tableAttribute in tableAttributes)
-        //    {
-        //        //!string.IsNullOrEmpty(tableAttribute.Nome) && 
-        //        if (!tableAttribute.Historico) continue;
-        //        nomeColuna = tableAttribute.Nome;
-        //    }
-        //    return nomeColuna;
-        //}
         private bool ObterValidacao(object valorColuna)
         {
-            if (valorColuna == null) return false;
-            if (valorColuna.GetType() == typeof(string) && (string)valorColuna == string.Empty) return false;
-            if (valorColuna.GetType() == typeof(int) && (int)valorColuna == -1) return false;
-            if (valorColuna.GetType() == typeof(Guid) && (Guid)valorColuna == Guid.Empty) return false; //proteção guid especifico
+            if (valorColuna is null) return false;
+            if (valorColuna is string && valorColuna as string is "") return false;
+            if (valorColuna is int && (int)valorColuna is -1) return false;
+            if (valorColuna is Guid && (Guid)valorColuna == Guid.Empty) return false; //proteção guid especifico
             return true;
         }
         private string ObterStringConexao()

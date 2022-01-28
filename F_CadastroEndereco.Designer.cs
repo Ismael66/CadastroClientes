@@ -41,7 +41,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tb_num = new System.Windows.Forms.TextBox();
-            this.bt_RegistraNovoCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tb_pais
@@ -174,17 +173,6 @@
             this.tb_num.Size = new System.Drawing.Size(162, 20);
             this.tb_num.TabIndex = 41;
             // 
-            // bt_RegistraNovoCliente
-            // 
-            this.bt_RegistraNovoCliente.Location = new System.Drawing.Point(541, 506);
-            this.bt_RegistraNovoCliente.Name = "bt_RegistraNovoCliente";
-            this.bt_RegistraNovoCliente.Size = new System.Drawing.Size(175, 28);
-            this.bt_RegistraNovoCliente.TabIndex = 49;
-            this.bt_RegistraNovoCliente.Text = "Retornar\r\n";
-            this.bt_RegistraNovoCliente.UseVisualStyleBackColor = true;
-            this.bt_RegistraNovoCliente.Visible = false;
-            this.bt_RegistraNovoCliente.Click += new System.EventHandler(this.bt_RegistraNovoCliente_Click);
-            // 
             // F_CadastroEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,8 +180,6 @@
             this.BackgroundImage = global::CadastroClientesWF.Properties.Resources.maxresdefault;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 546);
-            this.ControlBox = false;
-            this.Controls.Add(this.bt_RegistraNovoCliente);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tb_pais);
             this.Controls.Add(this.label15);
@@ -208,7 +194,6 @@
             this.Controls.Add(this.tb_rua);
             this.Controls.Add(this.label10);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
             this.Name = "F_CadastroEndereco";
             this.Text = "Cadastro de Endereço";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.F_CadastroEndereco_FormClosed);
@@ -232,6 +217,5 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tb_num;
-        private System.Windows.Forms.Button bt_RegistraNovoCliente;
     }
 }

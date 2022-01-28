@@ -45,11 +45,6 @@
             this.tb_nome = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.lv_enderecos = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -248,46 +243,6 @@
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // lv_enderecos
-            // 
-            this.lv_enderecos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2,
-            this.columnHeader4,
-            this.columnHeader3});
-            this.lv_enderecos.HideSelection = false;
-            this.lv_enderecos.Location = new System.Drawing.Point(543, 323);
-            this.lv_enderecos.Name = "lv_enderecos";
-            this.lv_enderecos.Size = new System.Drawing.Size(215, 112);
-            this.lv_enderecos.TabIndex = 35;
-            this.lv_enderecos.UseCompatibleStateImageBehavior = false;
-            this.lv_enderecos.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "CEP";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.DisplayIndex = 2;
-            this.columnHeader4.Text = "Bairro";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.DisplayIndex = 1;
-            this.columnHeader3.Text = "Estado";
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(543, 461);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(215, 30);
-            this.button3.TabIndex = 36;
-            this.button3.Text = "Mostrar endereços registrados\r\n";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,8 +250,6 @@
             this.BackgroundImage = global::CadastroClientesWF.Properties.Resources.Super_Mário;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 569);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.lv_enderecos);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mtb_dataNasc);
@@ -316,6 +269,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -341,11 +295,6 @@
         private System.Windows.Forms.TextBox tb_nome;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListView lv_enderecos;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Button button3;
     }
 }
 

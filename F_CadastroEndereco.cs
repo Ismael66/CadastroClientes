@@ -27,7 +27,7 @@ namespace CadastroClientesWF
         }
         private void InsereValorEndereco()
         {
-            endereco.Id_endereco = Guid.NewGuid();
+            endereco.Id = Guid.NewGuid();
             endereco.Id_cliente = Form1.cliente.Id;
             endereco.Cep = mtb_cep.Text;
             endereco.Rua = tb_rua.Text;
@@ -51,11 +51,9 @@ namespace CadastroClientesWF
             endereco.Salvar();
             MessageBox.Show("Endereço cadastrado com sucesso!");
             ResetaCampos();
-            bt_RegistraNovoCliente.Visible = true;
         }
         private void bt_RegistraNovoCliente_Click(object sender, EventArgs e)
         {
-            bt_RegistraNovoCliente.Visible = false;
             this.Close();
         }
         private async void mtb_cep_Leave_1(object sender, EventArgs e)
